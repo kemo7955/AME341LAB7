@@ -10,6 +10,7 @@
 \usepackage{appendix} % Lets you create an appendix
 \usepackage[numbered]{matlab-prettifier} % Let's me import MATLAB code in a nice format
 \usepackage{indentfirst} % This indents the first paragraph. By default latex won't do it.
+\usepackage{subfigure}
 
 \setlength{\parskip}{1em} % This skips a line when making new paragraphs
 \newtagform{show_eq}{(Eq.\ }{)}  % how the equation numbers are displayed
@@ -49,6 +50,30 @@
 
 % ---------------------------- Results -------------------------------------
 \section{Results}
+
+\subsection{Sine and Square Wave}
+talk about the results that we got during the first part of the experiment. The conditions, setup, ect.
+\begin{figure}[ht]
+\centering
+\subfigure[Sine Wave]{
+\includegraphics[width=.4\linewidth]{sin.png}}
+\quad
+\subfigure[Square Wave]{
+\includegraphics[width=.4\linewidth]{square.png}}
+\caption{Sine and square waves with $V_{rms}$ of 2V at 100Hz shown in the frequency domain}
+\end{figure}
+
+\subsection{Aliasing a Signal}
+\begin{figure}[ht]
+\centering
+\subfigure[$f_s$ = 10kHz]{
+\includegraphics[width=.4\linewidth]{sin10000.png}}
+\quad
+\subfigure[$f_s$ = 2.5kHz]{
+\includegraphics[width=.4\linewidth]{sine2500.png}}
+\caption{Sine and square waves with $V_{rms}$ of 2V at 100Hz shown in the frequency domain}
+\end{figure}
+
 
 % ---------------------------- Discussion -------------------------------
 \section{Discussion}
