@@ -57,6 +57,7 @@ hold on;
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part2Initial(:,1),part2Initial(:,2),'k')
 xlabel('t [s]');
+xlim([0 .02])
 ylabel('V');
 
 % ---------------- Sine Wave time domain final ------------
@@ -81,6 +82,7 @@ figure()
 hold on; 
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part3time(:,1),part3time(:,2),'k')
+xlim([.02 .06])
 xlabel('t [s]');
 ylabel('V');
 
