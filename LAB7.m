@@ -39,6 +39,7 @@ hold on;
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part2sin(:,1),part2sin(:,2),'k')
 xlabel('$f$ [Hz]');
+xlim([0 1700])
 ylabel('Power');
 
 % ---------- Sine Wave at 2.5kHz Sampling Rate ------------
@@ -47,6 +48,7 @@ hold on;
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part2sinAliasing(:,1),part2sinAliasing(:,2),'k')
 xlabel('$f$ [Hz]');
+xlim([0 1700])
 ylabel('Power');
 
 % ---------------- Sine Wave time domain initial -------
