@@ -59,6 +59,7 @@ plot(part2Initial(:,1),part2Initial(:,2),'k')
 xlabel('t [s]');
 xlim([0 .02])
 ylabel('V');
+ylim([-3 3])
 
 % ---------------- Sine Wave time domain final ------------
 figure()
@@ -67,7 +68,7 @@ set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part2Final(:,1),part2Final(:,2),'k')
 xlabel('t [s]');
 ylabel('V');
-
+ylim([-3 3])
 % ----- Sine wave in time domain with increase Freq -------
 figure()
 hold on; 
@@ -75,6 +76,7 @@ set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part2Freq(:,1),part2Freq(:,2),'k')
 xlabel('t [s]');
 ylabel('V');
+ylim([-3 3])
 
 %% Figures for part 3
 % -------------- Mystery Signal in time domain ------------
