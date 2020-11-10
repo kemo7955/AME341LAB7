@@ -74,7 +74,7 @@ figure()
 hold on; 
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part2Freq(:,1),part2Freq(:,2),'k')
-xlabel('t [s]');
+xlabel('trr [s]');
 ylabel('V');
 ylim([-3 3])
 
@@ -99,6 +99,9 @@ ylabel('Power');
 % -------------- Mystery Signal f_s at 1000 Hz ------------
 figure()
 hold on; 
+maxPower = max(part31000(:,2))
+maxIndex = find(maxPower==part31000(:,2),1)
+maxFreq = part31000(maxIndex,1)
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part31000(:,1),part31000(:,2),'k')
 xlabel('$f$ [s]');
@@ -121,3 +124,5 @@ set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part32000(:,1),part32000(:,2))
 xlabel('$f$ [s]');
 ylabel('Power');
+
+%% 
