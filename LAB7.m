@@ -1,5 +1,5 @@
 clear;clc;close all
-% -------------------------- Import Data ---------------------------
+% -------------------------- Import Data ------------------
 % data(:,1) = time/freq
 % data(:,2) = power/voltage
 part1sin = importdata('Data Lab 7/Part1_sin.txt').data;
