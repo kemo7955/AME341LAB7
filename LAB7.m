@@ -147,7 +147,7 @@ xlabel('$f$ [s]');
 ylabel('Power [dB]');
 ylim([-125 10])
 legend([plt,line,harm],{'Signal','Fundamental $f$','Harmonic $f$'},'Interpreter','latex',...
-    'location','bestoutside')
+    'location','best')
 
 clear h p
 [h,~] = getHarmonics(part32000,length(part32000(:,1)),-60)
@@ -164,6 +164,6 @@ xlabel('$f$ [s]');
 ylabel('Power [dB]');
 ylim([-125 10])
 legend([plt2,line2,harm2],{'Signal','Fundamental $f$','Harmonic $f$'},'Interpreter','latex',...
-    'location','bestoutside')
+    'location','best')
 
 %%
