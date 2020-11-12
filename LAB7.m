@@ -41,7 +41,7 @@ for i=1:length(h)
 end
 xlabel('$f$ [Hz]');
 ylabel('Power [dB]');
-legend([plt,line],{'Signal','Fundamental $f$'},'Interpreter','latex')
+legend([plt,line],{'Signal','Harmonic $f$'},'Interpreter','latex')
 
 %% Figures From Part 2
 % ---------------- Sine Wave at 10kHz Sampling Rate -------
@@ -140,14 +140,14 @@ set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(sinwave777(:,1),sinwave777(:,2),'k')
 plt = plot(triangle33(:,1),triangle33(:,2),'k');
 for i = 1:length(h)
-    xline(h(i),'--r');
+    harm = xline(h(i),'--m');
 end
 line = xline(f,'--r');
 xlabel('$f$ [s]');
 ylabel('Power [dB]');
 ylim([-125 10])
-legend([plt,line],{'Signal','Fundamental $f$'},'Interpreter','latex',...
-    'location','best')
+legend([plt,line,harm],{'Signal','Fundamental $f$','Harmonic $f$'},'Interpreter','latex',...
+    'location','bestoutside')
 
 clear h p
 [h,~] = getHarmonics(part32000,length(part32000(:,1)),-60)
@@ -157,13 +157,13 @@ hold on;
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plt2 = plot(part32000(:,1),part32000(:,2));
 for i = 1:length(h)
-    xline(h(i),'--r');
+    harm2 = xline(h(i),'--m');
 end
 line2 = xline(f,'--r');
 xlabel('$f$ [s]');
 ylabel('Power [dB]');
 ylim([-125 10])
-legend([plt2,line2],{'Signal','Fundamental $f$'},'Interpreter','latex',...
-    'location','best')
+legend([plt2,line2,harm2],{'Signal','Fundamental $f$','Harmonic $f$'},'Interpreter','latex',...
+    'location','bestoutside')
 
 %%

@@ -1,5 +1,5 @@
 clear;clc;close all
-% -------------------------- Import Data ---------------------------
+% -------------------------- Import Data ------------------
 % data(:,1) = time/freq
 % data(:,2) = power/voltage
 part1sin = importdata('Data Lab 7/Part1_sin.txt').data;
@@ -41,7 +41,7 @@ for i=1:length(h)
 end
 xlabel('$f$ [Hz]');
 ylabel('Power [dB]');
-legend([plt,line],{'Signal','Fundamental $f$'},'Interpreter','latex')
+legend([plt,line],{'Signal','Harmonics $f$'},'Interpreter','latex')
 
 %% Figures From Part 2
 % ---------------- Sine Wave at 10kHz Sampling Rate -------
@@ -50,8 +50,8 @@ clear h
 figure()
 hold on; 
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
-plt = plot(part2sin(:,1),part2sin(:,2),'k')
-line = xline(h,'--r')
+plt = plot(part2sin(:,1),part2sin(:,2),'k');
+line = xline(h,'--r');
 xlabel('$f$ [Hz]');
 xlim([0 1700])
 ylabel('Power [dB]');
@@ -64,8 +64,8 @@ clear h
 figure()
 hold on;
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
-plt = plot(part2sinAliasing(:,1),part2sinAliasing(:,2),'k')
-line = xline(h,'--r')
+plt = plot(part2sinAliasing(:,1),part2sinAliasing(:,2),'k');
+line = xline(h,'--r');
 xlabel('$f$ [Hz]');
 xlim([0 1700])
 ylabel('Power [dB]');
@@ -155,15 +155,15 @@ clear h p
 subplot(2,1,2)
 hold on;
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
-plt2 = plot(part32000(:,1),part32000(:,2))
+plt2 = plot(part32000(:,1),part32000(:,2));
 for i = 1:length(h)
-    xline(h(i),'--r');
+    harm = xline(h(i),'--r');
 end
 line2 = xline(f,'--r');
 xlabel('$f$ [s]');
 ylabel('Power [dB]');
 ylim([-125 10])
-legend([plt,line],{'Signal','Fundamental $f$'},'Interpreter','latex',...
-    'location','best')
+legend([plt2,line2,harm],{'Signal','Fundamental $f$','Harmonic $f$'},'Interpreter','latex',...
+    'location','bestoutside'')
 
 %%
