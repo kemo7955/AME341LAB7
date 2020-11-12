@@ -1,0 +1,21 @@
+function [harmonics,power] = getHarmonics(dataSet,n,thresho)
+
+index = find( islocalmax(dataSet(:,2)) );
+harm = dataSet(index,1);
+p = dataSet(index,2);
+
+if nargin < 2
+    if length(index) > 5
+        harmonics = harm(1:5);
+        power = p(1:5);
+    else
+        harmonics = harm(1:length(index));
+        power = p(1:length(index));
+    end
+    
+else
+    harmonics = harm(1:n);
+    power = p(1:n);
+end
+
+end

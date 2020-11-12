@@ -17,39 +17,60 @@ triangle33 = importdata('Data Lab 7/triangle_33Hz.txt').data;
 
 %% Figures From Part 1
 % --------------- Part 1 Sine Wave ------------------------
-figure()
-hold on; 
-set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
-plot(part1sin(:,1),part1sin(:,2),'k')
-xlabel('$f$ [Hz]');
-ylabel('Power');
-
-% --------------- Part 1 Square Wave ----------------------
+clear h
+[h,~] = getFundamental(part1sin)
 figure()
 hold on;
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
-plot(part1square(:,1),part1square(:,2),'k')
+plt = plot(part1sin(:,1),part1sin(:,2),'k');
+line = xline(h,'--r');
 xlabel('$f$ [Hz]');
-ylabel('Power');
+ylabel('Power [dB]');
+legend([plt,line],{'Signal','Fundamental $f$'},'Interpreter','latex')
+
+
+% --------------- Part 1 Square Wave ----------------------
+clear h
+[h,~] = getHarmonics(part1square)
+figure()
+hold on;
+set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
+plt = plot(part1square(:,1),part1square(:,2),'k');
+for i=1:length(h)
+    line = xline(h(i),'--r');
+end
+xlabel('$f$ [Hz]');
+ylabel('Power [dB]');
+legend([plt,line],{'Signal','Fundamental $f$'},'Interpreter','latex')
 
 %% Figures From Part 2
 % ---------------- Sine Wave at 10kHz Sampling Rate -------
+clear h
+[h,~] = getFundamental(part2sin)
 figure()
 hold on; 
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
-plot(part2sin(:,1),part2sin(:,2),'k')
+plt = plot(part2sin(:,1),part2sin(:,2),'k');
+line = xline(h,'--r');
 xlabel('$f$ [Hz]');
 xlim([0 1700])
-ylabel('Power');
+ylabel('Power [dB]');
+legend([plt,line],{'Signal','Fundamental $f$'},'Interpreter','latex',...
+    'location','best')
 
 % ---------- Sine Wave at 2.5kHz Sampling Rate ------------
+clear h
+[h,~] = getFundamental(part2sinAliasing)
 figure()
 hold on;
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
-plot(part2sinAliasing(:,1),part2sinAliasing(:,2),'k')
+plt = plot(part2sinAliasing(:,1),part2sinAliasing(:,2),'k');
+line = xline(h,'--r');
 xlabel('$f$ [Hz]');
 xlim([0 1700])
-ylabel('Power');
+ylabel('Power [dB]');
+legend([plt,line],{'Signal','Fundamental $f$'},'Interpreter','latex',...
+    'location','best')
 
 % ---------------- Sine Wave time domain initial -------
 figure()
@@ -74,7 +95,7 @@ figure()
 hold on; 
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part2Freq(:,1),part2Freq(:,2),'k')
-xlabel('trr [s]');
+xlabel('t [s]');
 ylabel('V');
 ylim([-3 3])
 
@@ -89,40 +110,60 @@ xlabel('t [s]');
 ylabel('V');
 
 % -------------- Mystery Signal f_s at 2000 Hz ------------
+[h,p] = getHarmonics(part32000,length(part32000(:,1)),-60)
 figure()
 hold on; 
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part32000(:,1),part32000(:,2),'k')
 xlabel('$f$ [s]');
-ylabel('Power');
+ylabel('Power [dB]');
 
 % -------------- Mystery Signal f_s at 1000 Hz ------------
 figure()
 hold on; 
-maxPower = max(part31000(:,2))
-maxIndex = find(maxPower==part31000(:,2),1)
-maxFreq = part31000(maxIndex,1)
+%maxPower = max(part31000(:,2))
+%maxIndex = find(maxPower==part31000(:,2),1)
+%maxFreq = part31000(maxIndex,1)
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(part31000(:,1),part31000(:,2),'k')
 xlabel('$f$ [s]');
-ylabel('Power');
+ylabel('Power [dB]');
 
 %% The Extra Graphs
 figure()
-
+clear h p
+[h,~] = getHarmonics(triangle33,length(triangle33(:,1)),-60)
+[f,~] = getFundamental(sinwave777)
 subplot(2,1,1)
 hold on;
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
 plot(sinwave777(:,1),sinwave777(:,2),'k')
-plot(triangle33(:,1),triangle33(:,2),'k')
+plt = plot(triangle33(:,1),triangle33(:,2),'k');
+for i = 1:length(h)
+    xline(h(i),'--r');
+end
+line = xline(f,'--r');
 xlabel('$f$ [s]');
-ylabel('Power');
+ylabel('Power [dB]');
+ylim([-125 10])
+legend([plt,line],{'Signal','Fundamental $f$'},'Interpreter','latex',...
+    'location','best')
 
+clear h p
+[h,~] = getHarmonics(part32000,length(part32000(:,1)),-60)
+[f,~] = getFundamental(part32000)
 subplot(2,1,2)
 hold on;
 set(gca,'defaulttextinterpreter','latex','TickLabelInterpreter','latex');
-plot(part32000(:,1),part32000(:,2))
+plt2 = plot(part32000(:,1),part32000(:,2));
+for i = 1:length(h)
+    xline(h(i),'--r');
+end
+line2 = xline(f,'--r');
 xlabel('$f$ [s]');
-ylabel('Power');
+ylabel('Power [dB]');
+ylim([-125 10])
+legend([plt2,line2],{'Signal','Fundamental $f$'},'Interpreter','latex',...
+    'location','best')
 
-%% 
+%%
